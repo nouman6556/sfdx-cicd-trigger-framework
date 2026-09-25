@@ -19,7 +19,8 @@ public with sharing class IntegrationEventHandler {
             }
         }
         if (!audit.isEmpty()) {
-            insert audit;
+            // Subscriber runs as the Automated Process user, so system mode is explicit here.
+            insert as system audit;
         }
     }
 }
